@@ -13,16 +13,16 @@ S. H. Cheng and N.J. Higham.
   factorization](http://dx.doi.org/10.1137/S0895479896302898)".
 SIAM J. Matrix Anal. Appl., 19(4):1097-1110, 1998.
 
-and it uses LDL^T factorization with a symmetric form of rook pivoting
+and uses LDL^T factorization with a symmetric form of rook pivoting
 proposed by Ashcraft, Grimes, and Lewis.
 
 The MATLAB functions are:
 
-* `modchol_ldlt``: the modified Cholesky function.  
+* `modchol_ldlt`: the modified Cholesky function.  
 This is a research code that does not exploit symmetry and is not
 designed to be efficient.
 
-* `test_modchol_ldlt``: a simple test code.
+* `test_modchol_ldlt`: a simple test code.
 
 Requirements
 -------------

@@ -18,9 +18,9 @@ proposed by Ashcraft, Grimes, and Lewis.
 
 The MATLAB functions are:
 
-* `modchol_ldlt`: the modified Cholesky function.  
-This is a research code that does not exploit symmetry and is not
-designed to be efficient.
+* `modchol_ldlt`: the modified Cholesky function.  This is a research code
+that does not exploit symmetry and is not designed to be efficient.
+It was originally written by Bobby Cheng and Nick Higham in 1996.
 
 * `test_modchol_ldlt`: a simple test code.
 

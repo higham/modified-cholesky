@@ -4,8 +4,8 @@
 About
 -----
 
-`modified-cholesky` contains the MATLAB function `modchol_ldlt`, which
-computes a modified Cholesky factorization of a symmetric and possibly
+`modified-cholesky` contains MATLAB functions that 
+compute a modified Cholesky factorization of a symmetric and possibly
 indefinite matrix. The algorithm is from
 
 S. H. Cheng and N.J. Higham.
@@ -22,7 +22,7 @@ The MATLAB functions are:
 * `modchol_ldlt`: the modified Cholesky function.  It calls the built-in
   MATLAB function ldl to compute the LDL^T factorization.
 
-* `modchol_ldlt_m`: this is the original version of `modchol_ldlt`,
+* `modchol_ldlt_m`: this is the original version of `modchol_ldlt` from 1996,
   where the `_m` in the name denotes that the LDL^T factorization is computed
   using pure M-code.
   The output of this version should be the same as that from `modchol_ldlt`
@@ -33,9 +33,9 @@ The MATLAB functions are:
     for anyone who wants to modify the factorization to use a different
     pivoting strategy.
   * The `_m` version computes the growth factor for the factorization,
-    and this is not available from `modchol_ldlt` itself.
-  Note that the `_m` code does not exploit symmetry and is not designed to be
-  efficient.  
+    which this is not available from `modchol_ldlt` itself.
+Note that the `_m` code does not exploit symmetry and is not designed to be
+efficient.  
 
 * `test_modchol_ldlt`: a simple test code.
 

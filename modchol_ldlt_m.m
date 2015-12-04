@@ -12,9 +12,10 @@ function [L, DMC, P, D, rho] = modchol_ldlt_m(A,delta)
 %   delta, which defaults to eps*norm(A,'fro').
 %   The LDL' factorization is compute using a symmetric form of rook 
 %   pivoting proposed by Ashcraft, Grimes and Lewis.
-
+%
 %   This routine does not exploit symmetry and is not designed to be
-%   efficient.
+%   efficient.  The function modchol_ldlt should generally be used in
+%   preference to this one.
 
 %   Reference:
 %   S. H. Cheng and N. J. Higham. A modified Cholesky algorithm based
@@ -28,6 +29,7 @@ if nargin < 2, delta = sqrt(eps)*norm(A,'fro'); end
 
 n = max(size(A));
 k = 1;
+DMC = eye(n);
 D = eye(n);
 L = eye(n);
 pp = 1:n;
@@ -65,7 +67,6 @@ while k < n
                        pivot = 1;
                        s = 2;
                        swap = 2;
-                       m1 = j; m2 = r;
                        A( [k, j], : ) = A( [j, k], : );
                        L( [k, j], : ) = L( [j, k], : );
                        A( :, [k, j] ) = A( :, [j, k] );
@@ -126,16 +127,16 @@ while k < n
          end
       
       elseif s == 2 
-
+          
          E = D(k:k+1,k:k+1);
-         [U,T] = schur(E);
+         [U,T] = eig(E);
          for ii = 1:2
              if T(ii,ii) <= delta
                 T(ii,ii) = delta;
              end
          end
-         
-         DMC(k:k+1,k:k+1) = U*T*U';
+         temp = U*T*U';
+         DMC(k:k+1,k:k+1) = (temp + temp')/2;  % Ensure symmetric.
 
       end
 

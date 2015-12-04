@@ -26,6 +26,7 @@ if nargin < 2, delta = sqrt(eps)*norm(A,'fro'); end
 n = max(size(A));
 
 [L,D,p] = ldl(A,'vector'); 
+DMC = eye(n);
 
 % Modified Cholesky perturbations.
 k = 1;
@@ -43,13 +44,14 @@ while k <= n
       else % 2-by-2 block
 
          E = D(k:k+1,k:k+1);
-         [U,T] = schur(E);
+         [U,T] = eig(E);
          for ii = 1:2
              if T(ii,ii) <= delta
                 T(ii,ii) = delta;
              end
          end
-         DMC(k:k+1,k:k+1) = U*T*U';
+         temp = U*T*U';
+         DMC(k:k+1,k:k+1) = (temp + temp')/2;  % Ensure symmetric.
          k = k + 2;
 
       end

@@ -14,13 +14,28 @@ S. H. Cheng and N.J. Higham.
 SIAM J. Matrix Anal. Appl., 19(4):1097-1110, 1998.
 
 and uses LDL^T factorization with a symmetric form of rook pivoting
-proposed by Ashcraft, Grimes, and Lewis.
+proposed by Ashcraft, Grimes, and Lewis.  The functions here are based on
+code originally written by Bobby Cheng and Nick Higham in 1996.
 
 The MATLAB functions are:
 
-* `modchol_ldlt`: the modified Cholesky function.  This is a research code
-that does not exploit symmetry and is not designed to be efficient.
-It was originally written by Bobby Cheng and Nick Higham in 1996.
+* `modchol_ldlt`: the modified Cholesky function.  It calls the built-in
+  MATLAB function ldl to compute the LDL^T factorization.
+
+* `modchol_ldlt_m`: this is the original version of `modchol_ldlt`,
+  where the `_m` in the name denotes that the LDL^T factorization is computed
+  using pure M-code.
+  The output of this version should be the same as that from `modchol_ldlt`
+  to within rounding error.  The reasons for including this version are as
+  follows.
+  * Since the code for the factorization is explicitly included as M-code
+    the `_m` version is of pedagogical interest.  It will also be useful
+    for anyone who wants to modify the factorization to use a different
+    pivoting strategy.
+  * The `_m` version computes the growth factor for the factorization,
+    and this is not available from `modchol_ldlt` itself.
+  Note that the `_m` code does not exploit symmetry and is not designed to be
+  efficient.  
 
 * `test_modchol_ldlt`: a simple test code.
 

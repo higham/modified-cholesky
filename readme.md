@@ -34,8 +34,9 @@ The MATLAB functions are:
     pivoting strategy.
   * The `_m` version computes the growth factor for the factorization,
     which this is not available from `modchol_ldlt` itself.
-Note that the `_m` code does not exploit symmetry and is not designed to be
-efficient.  
+
+  Note that the `_m` version does not exploit symmetry and is not designed to be
+  efficient.  
 
 * `test_modchol_ldlt`: a simple test code.
 

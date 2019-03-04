@@ -9,7 +9,7 @@ function [L, DMC, P, D, rho] = modchol_ldlt_m(A,delta)
 %   that P*A*P' = L*D0*L'.  If A is sufficiently positive definite then 
 %   E = 0 and D = D0.  Rho is the growth factor for the factorization.
 %   The algorithm sets the smallest eigenvalue of D to the tolerance
-%   delta, which defaults to eps*norm(A,'fro').
+%   delta, which defaults to sqrt(eps)*norm(A,'fro').
 %   The LDL' factorization is compute using a symmetric form of rook 
 %   pivoting proposed by Ashcraft, Grimes and Lewis.
 %
